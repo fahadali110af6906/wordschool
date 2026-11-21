@@ -1,0 +1,80 @@
+/* ==========================================================================
+   SCHOOL MANAGEMENT SYSTEM — URDU RTL STYLES
+   ========================================================================== */
+
+body.sms-rtl-mode {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Noto Nastaliq Urdu', 'Noto Sans Arabic', Tahoma, -apple-system, sans-serif;
+}
+
+body.sms-rtl-mode h1,
+body.sms-rtl-mode h2,
+body.sms-rtl-mode h3,
+body.sms-rtl-mode h4,
+body.sms-rtl-mode .sms-hero-title,
+body.sms-rtl-mode .sms-section-title {
+    font-family: 'Noto Nastaliq Urdu', 'Noto Sans Arabic', Tahoma, sans-serif;
+    line-height: 1.6;
+}
+
+/* Nav & Topbar */
+.sms-rtl-mode .sms-top-info span {
+    margin-right: 0;
+    margin-left: 20px;
+}
+
+.sms-rtl-mode .sms-user-pill {
+    padding-left: 0;
+    padding-right: 15px;
+    border-left: none;
+    border-right: 1px solid var(--sms-border);
+}
+
+.sms-rtl-mode .count-pill {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+/* Inputs & Icons */
+.sms-rtl-mode .input-with-icon i {
+    left: auto;
+    right: 12px;
+}
+
+.sms-rtl-mode .input-with-icon input {
+    padding-left: 14px;
+    padding-right: 40px;
+}
+
+/* Tables */
+.sms-rtl-mode .sms-table th {
+    text-align: right;
+}
+
+.sms-rtl-mode .sms-notice-card.urgent-border {
+    border-left: none;
+    border-right: 4px solid var(--sms-danger);
+}
+
+.sms-rtl-mode .sms-slot-card {
+    border-left: none;
+    border-right: 3px solid var(--sms-primary-light);
+}
+
+.sms-rtl-mode .sms-del-slot {
+    right: auto;
+    left: 6px;
+}
+
+/* Sidebar for Mobile */
+@media (max-width: 992px) {
+    .sms-rtl-mode .sms-portal-sidebar {
+        left: auto;
+        right: -260px;
+    }
+    .sms-rtl-mode .sms-portal-sidebar.open {
+        left: auto;
+        right: 0;
+    }
+}

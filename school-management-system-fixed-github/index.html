@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beacon Light International Academy - School Management System</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Dashicons Font & CSS -->
+    <link rel="stylesheet" href="assets/css/dashicons.min.css">
+    <!-- Core Styles -->
+    <link rel="stylesheet" href="assets/css/landing.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body class="sms-landing-body">
+
+    <!-- Top Notification Bar -->
+    <div class="sms-top-bar">
+        <div class="sms-container sms-top-bar-inner">
+            <div class="sms-top-info">
+                <span><i class="dashicons dashicons-phone"></i> <span id="topPhone">+92 51 111 222 333</span></span>
+                <span class="sms-hide-mobile"><i class="dashicons dashicons-email"></i> <span id="topEmail">info@beaconlight.edu.pk</span></span>
+            </div>
+            <div class="sms-top-actions">
+                <div class="sms-lang-switcher" style="display:inline-flex; align-items:center; gap:6px;">
+                    <button type="button" class="lang-pill" id="langSwitchBtn" onclick="toggleLanguage()" style="background:#0f172a; color:#fff; border:1px solid #334155; padding:4px 10px; border-radius:12px; cursor:pointer; font-size:12px; display:inline-flex; align-items:center; gap:4px;">
+                        <i class="dashicons dashicons-translation"></i> <span id="langSwitchText">اردو (Urdu)</span>
+                    </button>
+                </div>
+                <a href="portal.html" class="sms-btn-top-portal">
+                    <i class="dashicons dashicons-admin-users"></i> <span data-i18n="portal_login">Portal Login</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sms-header" id="mainHeader">
+        <div class="sms-container sms-header-inner">
+            <a href="index.html" class="sms-brand">
+                <div class="sms-brand-icon">🎓</div>
+                <div class="sms-brand-text">
+                    <span class="sms-brand-name" data-i18n="school_name">Beacon Light International Academy</span>
+                    <span class="sms-brand-tag" data-i18n="school_tagline">Empowering Minds, Shaping the Future</span>
+                </div>
+            </a>
+
+            <nav class="sms-nav" id="mainNav">
+                <ul class="sms-nav-list">
+                    <li><a href="#home" data-i18n="home">Home</a></li>
+                    <li><a href="#about" data-i18n="about">About</a></li>
+                    <li><a href="#academics" data-i18n="academics">Academics</a></li>
+                    <li><a href="#facilities" data-i18n="facilities">Facilities</a></li>
+                    <li><a href="#faculty" data-i18n="teachers">Teachers</a></li>
+                    <li><a href="#admissions" data-i18n="admissions">Admissions</a></li>
+                    <li><a href="#notices" data-i18n="notices">Notices</a></li>
+                    <li><a href="#contact" data-i18n="contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="sms-header-cta">
+                <a href="portal.html" class="sms-btn sms-btn-primary">
+                    <i class="dashicons dashicons-lock"></i> <span data-i18n="portal_access">Portal Access</span>
+                </a>
+                <button class="sms-mobile-toggle" id="mobileMenuToggle" aria-label="Toggle Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="sms-hero-section" id="home">
+        <div class="sms-container sms-hero-inner">
+            <div class="sms-hero-content">
+                <div class="sms-hero-badge">
+                    <span class="pulse-dot"></span> Admissions Open 2026-2027
+                </div>
+                <h1 class="sms-hero-title" data-i18n="hero_title">Inspiring Academic Excellence, Character & Leadership</h1>
+                <p class="sms-hero-subtitle" data-i18n="hero_subtitle">A future-focused school community committed to nurturing curiosity, innovation, and strong moral values in students from Grade 1 to 10.</p>
+                <div class="sms-hero-buttons">
+                    <a href="#admissions" class="sms-btn sms-btn-accent sms-btn-lg">
+                        <i class="dashicons dashicons-welcome-write-blog"></i> <span data-i18n="apply_now">Apply for Admission</span>
+                    </a>
+                    <a href="#academics" class="sms-btn sms-btn-outline-white sms-btn-lg">
+                        <i class="dashicons dashicons-book-alt"></i> <span data-i18n="explore_curriculum">Explore Curriculum</span>
+                    </a>
+                </div>
+                <div class="sms-hero-trust">
+                    <div class="trust-item">
+                        <strong>100%</strong> Board Success
+                    </div>
+                    <div class="trust-divider"></div>
+                    <div class="trust-item">
+                        <strong>25:1</strong> Student-Teacher Ratio
+                    </div>
+                    <div class="trust-divider"></div>
+                    <div class="trust-item">
+                        <strong>STEM & AI</strong> Curriculum
+                    </div>
+                </div>
+            </div>
+            <div class="sms-hero-visual">
+                <div class="sms-hero-card-glass">
+                    <div class="card-glass-header">
+                        <div class="live-indicator"></div>
+                        <span>Campus Live Overview</span>
+                    </div>
+                    <div class="card-glass-stats">
+                        <div class="glass-stat">
+                            <span class="num" id="statStudents">850+</span>
+                            <span class="txt" data-i18n="stat_students">Enrolled Students</span>
+                        </div>
+                        <div class="glass-stat">
+                            <span class="num" id="statTeachers">45+</span>
+                            <span class="txt" data-i18n="stat_teachers">Qualified Faculty</span>
+                        </div>
+                        <div class="glass-stat">
+                            <span class="num" id="statClasses">20</span>
+                            <span class="txt" data-i18n="stat_classes">Active Classes</span>
+                        </div>
+                        <div class="glass-stat">
+                            <span class="num">100%</span>
+                            <span class="txt" data-i18n="stat_pass_rate">Success Rate</span>
+                        </div>
+                    </div>
+                    <div class="card-glass-notice">
+                        <i class="dashicons dashicons-megaphone"></i>
+                        <span>Latest: Annual Admissions test & Campus Walkthrough scheduled for new batch.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="sms-section sms-section-about" id="about">
+        <div class="sms-container">
+            <div class="sms-section-head">
+                <span class="sms-section-tag" data-i18n="about">About Us</span>
+                <h2 class="sms-section-title" data-i18n="about_title">Building Tomorrow's Leaders Today</h2>
+                <p class="sms-section-desc" data-i18n="about_desc">Beacon Light International Academy combines world-class modern education with holistic moral grounding, preparing learners to thrive in higher academics and global careers.</p>
+            </div>
+
+            <div class="sms-grid-3">
+                <div class="sms-card-feature">
+                    <div class="sms-icon-box bg-blue">
+                        <i class="dashicons dashicons-awards"></i>
+                    </div>
+                    <h3 data-i18n="mission">Our Mission</h3>
+                    <p data-i18n="mission_desc">To deliver an inclusive, rigorous, and inspiring learning ecosystem where each student develops critical thinking, creative resilience, and ethical leadership.</p>
+                </div>
+                <div class="sms-card-feature">
+                    <div class="sms-icon-box bg-green">
+                        <i class="dashicons dashicons-visibility"></i>
+                    </div>
+                    <h3 data-i18n="vision">Our Vision</h3>
+                    <p data-i18n="vision_desc">To be the country's benchmark institution in holistic student development, bridging academic rigor with modern digital competencies.</p>
+                </div>
+                <div class="sms-card-feature">
+                    <div class="sms-icon-box bg-gold">
+                        <i class="dashicons dashicons-heart"></i>
+                    </div>
+                    <h3 data-i18n="values">Core Values</h3>
+                    <p data-i18n="values_desc">Integrity, Curiosity, Respect, Excellence, and Compassion form the bedrock of everything we teach and practice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Programs -->
+    <section class="sms-section sms-section-light" id="academics">
+        <div class="sms-container">
+            <div class="sms-section-head">
+                <span class="sms-section-tag" data-i18n="academics">Academics</span>
+                <h2 class="sms-section-title" data-i18n="programs_title">Structured Academic Pathways</h2>
+                <p class="sms-section-desc" data-i18n="programs_subtitle">Comprehensive syllabi aligned with international standards and national curriculum benchmarks.</p>
+            </div>
+
+            <div class="sms-grid-3">
+                <div class="sms-card-program">
+                    <div class="program-badge">Grade 1 - 5</div>
+                    <h3 data-i18n="primary_school">Primary Education</h3>
+                    <p data-i18n="primary_desc">Building foundational literacy, numeracy, social skills, and creative expression through engaging experiential learning.</p>
+                    <ul class="program-features">
+                        <li><i class="dashicons dashicons-yes-alt"></i> Phonics & Creative Writing</li>
+                        <li><i class="dashicons dashicons-yes-alt"></i> Practical Mental Math</li>
+                        <li><i class="dashicons dashicons-yes-alt"></i> Interactive Smartboards</li>
+                    </ul>
+                </div>
+
+                <div class="sms-card-program featured">
+                    <div class="program-badge">Grade 6 - 8</div>
+                    <h3 data-i18n="middle_school">Middle School</h3>
+                    <p data-i18n="middle_desc">Transitioning into deeper scientific inquiries, critical problem solving, digital computer literacy, and team collaboration.</p>
+                    <ul class="program-features">
+                        <li><i class="dashicons dashicons-yes-alt"></i> Laboratory Science Practices</li>
+                        <li><i class="dashicons dashicons-yes-alt"></i> Computer Coding & Logic</li>
+                        <li><i class="dashicons dashicons-yes-alt"></i> Social Studies & Debates</li>
+                    </ul>
+                </div>
+
+                <div class="sms-card-program">
+                    <div class="program-badge">Grade 9 - 10</div>
+                    <h3 data-i18n="secondary_school">Secondary & Matriculation</h3>
+                    <p data-i18n="secondary_desc">Rigorous board examination preparation across Science, Computer Science, and Humanities with individual mentoring.</p>
+                    <ul class="program-features">
+                        <li><i class="dashicons dashicons-yes-alt"></i> Physics, Chemistry & Biology</li>
+                        <li><i class="dashicons dashicons-yes-alt"></i> Computer Science & Web Fundamentals</li>
+                        <li><i class="dashicons dashicons-yes-alt"></i> Board Exam Master Preparation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities -->
+    <section class="sms-section" id="facilities">
+        <div class="sms-container">
+            <div class="sms-section-head">
+                <span class="sms-section-tag" data-i18n="facilities">Facilities</span>
+                <h2 class="sms-section-title" data-i18n="facilities_title">State-of-the-Art Campus Amenities</h2>
+                <p class="sms-section-desc" data-i18n="facilities_subtitle">Designed to provide a secure, comfortable, and highly stimulating environment for all students.</p>
+            </div>
+
+            <div class="sms-grid-3">
+                <div class="sms-facility-card">
+                    <div class="facility-icon">🔬</div>
+                    <h3 data-i18n="fac_science">Advanced Science Labs</h3>
+                    <p data-i18n="fac_science_desc">Fully equipped physics, chemistry, and biology labs with modern safety equipment and apparatus.</p>
+                </div>
+                <div class="sms-facility-card">
+                    <div class="facility-icon">💻</div>
+                    <h3 data-i18n="fac_computer">Modern Computer Center</h3>
+                    <p data-i18n="fac_computer_desc">High-speed gigabit workstations, programming environments, and safe educational internet filtering.</p>
+                </div>
+                <div class="sms-facility-card">
+                    <div class="facility-icon">📚</div>
+                    <h3 data-i18n="fac_library">Digital Library</h3>
+                    <p data-i18n="fac_library_desc">Over 15,000 physical volumes, reading pods, academic journals, and round-the-clock digital e-book access.</p>
+                </div>
+                <div class="sms-facility-card">
+                    <div class="facility-icon">⚽</div>
+                    <h3 data-i18n="fac_sports">Sports Complex</h3>
+                    <p data-i18n="fac_sports_desc">Multipurpose ground, cricket pitch, badminton courts, table tennis arena, and qualified athletic coaches.</p>
+                </div>
+                <div class="sms-facility-card">
+                    <div class="facility-icon">🚌</div>
+                    <h3 data-i18n="fac_transport">Safe School Transport</h3>
+                    <p data-i18n="fac_transport_desc">Dedicated fleet of GPS-monitored, air-conditioned buses covering all major city residential zones.</p>
+                </div>
+                <div class="sms-facility-card">
+                    <div class="facility-icon">🥗</div>
+                    <h3 data-i18n="fac_canteen">Hygienic Cafeteria</h3>
+                    <p data-i18n="fac_canteen_desc">Nutritious meals, fresh juices, and clean snacks prepared daily under strict hygiene inspections.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty Spotlight -->
+    <section class="sms-section sms-section-light" id="faculty">
+        <div class="sms-container">
+            <div class="sms-section-head">
+                <span class="sms-section-tag" data-i18n="teachers">Faculty</span>
+                <h2 class="sms-section-title">Dedicated Educators & Mentors</h2>
+                <p class="sms-section-desc">Our experienced faculty combines subject mastery with personalized guidance.</p>
+            </div>
+
+            <div class="sms-grid-3" id="facultyCardsContainer">
+                <div class="sms-card-teacher">
+                    <div class="teacher-avatar">MT</div>
+                    <h3>Sir Muhammad Tariq</h3>
+                    <span class="teacher-role">Senior Mathematics & Physics Specialist</span>
+                    <p class="teacher-qual">M.Phil Mathematics, Quaid-i-Azam University</p>
+                </div>
+                <div class="sms-card-teacher">
+                    <div class="teacher-avatar">SA</div>
+                    <h3>Dr. Samina Altaf</h3>
+                    <span class="teacher-role">Head of Science & Biology Wing</span>
+                    <p class="teacher-qual">Ph.D Molecular Biology, Punjab University</p>
+                </div>
+                <div class="sms-card-teacher">
+                    <div class="teacher-avatar">AK</div>
+                    <h3>Sir Asim Khan</h3>
+                    <span class="teacher-role">Lead ICT & Computer Science Specialist</span>
+                    <p class="teacher-qual">M.S Computer Science, NUST</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions CTA Banner -->
+    <section class="sms-section-cta" id="admissions">
+        <div class="sms-container">
+            <div class="sms-cta-card">
+                <div class="sms-cta-content">
+                    <span class="cta-tag">Limited Seats Available</span>
+                    <h2 data-i18n="admissions_title">Begin Your Child's Journey of Excellence</h2>
+                    <p data-i18n="admissions_desc">Admissions are open for the 2026-2027 academic session. Secure your child's seat today through our straightforward 4-step admission process.</p>
+                    <div class="admission-steps">
+                        <span class="step-pill" data-i18n="step1">Step 1: Registration</span>
+                        <span class="step-arrow">➔</span>
+                        <span class="step-pill" data-i18n="step2">Step 2: Assessment</span>
+                        <span class="step-arrow">➔</span>
+                        <span class="step-pill" data-i18n="step3">Step 3: Interview</span>
+                        <span class="step-arrow">➔</span>
+                        <span class="step-pill" data-i18n="step4">Step 4: Admission Confirmed</span>
+                    </div>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="sms-btn sms-btn-white sms-btn-lg">
+                            <i class="dashicons dashicons-email-alt"></i> <span data-i18n="inquire_now">Inquire Now</span>
+                        </a>
+                        <a href="portal.html" class="sms-btn sms-btn-outline-white sms-btn-lg">
+                            <i class="dashicons dashicons-admin-users"></i> <span data-i18n="register_here">Online Portal Access</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notices & Circulars -->
+    <section class="sms-section" id="notices">
+        <div class="sms-container">
+            <div class="sms-section-head">
+                <span class="sms-section-tag" data-i18n="notices">Notice Board</span>
+                <h2 class="sms-section-title" data-i18n="notices_title">Official Announcements & Circulars</h2>
+                <p class="sms-section-desc" data-i18n="notices_subtitle">Stay updated with academic schedules, events, and school administrative notices.</p>
+            </div>
+
+            <div class="sms-grid-2" id="landingNoticesContainer">
+                <!-- Dynamically loaded from SMSData -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Location -->
+    <section class="sms-section sms-section-light" id="contact">
+        <div class="sms-container">
+            <div class="sms-section-head">
+                <span class="sms-section-tag" data-i18n="contact">Contact</span>
+                <h2 class="sms-section-title" data-i18n="contact_title">Get In Touch With Us</h2>
+                <p class="sms-section-desc" data-i18n="contact_subtitle">Have questions or want to schedule a personalized campus tour? We'd love to hear from you.</p>
+            </div>
+
+            <div class="sms-grid-contact">
+                <div class="sms-contact-info-cards">
+                    <div class="contact-card">
+                        <div class="c-icon"><i class="dashicons dashicons-location"></i></div>
+                        <div>
+                            <h4 data-i18n="address">Campus Address</h4>
+                            <p id="contactAddress">Plot 45-B, Sector H-8/4, Education Hub, Islamabad, Pakistan</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="c-icon"><i class="dashicons dashicons-phone"></i></div>
+                        <div>
+                            <h4 data-i18n="phone">Phone Number</h4>
+                            <p id="contactPhone">+92 51 111 222 333</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="c-icon"><i class="dashicons dashicons-email"></i></div>
+                        <div>
+                            <h4 data-i18n="email">Email Address</h4>
+                            <p id="contactEmail">info@beaconlight.edu.pk</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="c-icon"><i class="dashicons dashicons-clock"></i></div>
+                        <div>
+                            <h4>School Hours</h4>
+                            <p>Monday - Friday: 07:45 AM - 02:15 PM<br>Saturday: 08:00 AM - 12:30 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="sms-contact-form-box">
+                    <h3 data-i18n="send_message">Send Us a Direct Message</h3>
+                    <form id="smsPublicContactForm">
+                        <div class="form-group">
+                            <label><span data-i18n="your_name">Your Full Name</span> *</label>
+                            <input type="text" name="name" id="contactName" required class="sms-input" placeholder="e.g. Tariq Mehmood">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><span data-i18n="your_email">Your Email Address</span> *</label>
+                                <input type="email" name="email" id="contactEmailInput" required class="sms-input" placeholder="name@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label><span data-i18n="your_phone">Phone Number</span></label>
+                                <input type="text" name="phone" id="contactPhoneInput" class="sms-input" placeholder="+92 300 1234567">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label><span data-i18n="subject">Subject</span> *</label>
+                            <input type="text" name="subject" id="contactSubject" required class="sms-input" placeholder="Admission Inquiry / Campus Tour">
+                        </div>
+                        <div class="form-group">
+                            <label><span data-i18n="message">Your Message</span> *</label>
+                            <textarea name="message" id="contactMessage" rows="4" required class="sms-input" placeholder="Please write your questions or inquiry here..."></textarea>
+                        </div>
+                        <button type="submit" class="sms-btn sms-btn-primary sms-btn-block">
+                            <i class="dashicons dashicons-send"></i> <span data-i18n="submit">Submit Message</span>
+                        </button>
+                        <div class="sms-form-alert" id="smsContactAlert" style="display:none;"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="sms-footer">
+        <div class="sms-container sms-footer-grid">
+            <div class="footer-col brand-col">
+                <div class="sms-brand-footer">
+                    <span class="icon">🎓</span>
+                    <span class="name" data-i18n="school_name">Beacon Light International Academy</span>
+                </div>
+                <p class="tag" data-i18n="school_tagline">Empowering Minds, Shaping the Future</p>
+                <p class="desc">A premier educational institution fostering excellence, critical inquiry, and ethical leadership from Grade 1 to 10.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4 data-i18n="quick_links">Quick Links</h4>
+                <ul>
+                    <li><a href="#about" data-i18n="about">About Us</a></li>
+                    <li><a href="#academics" data-i18n="academics">Academics</a></li>
+                    <li><a href="#facilities" data-i18n="facilities">Campus Facilities</a></li>
+                    <li><a href="#faculty" data-i18n="teachers">Faculty</a></li>
+                    <li><a href="#admissions" data-i18n="admissions">Admissions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Portal & Resources</h4>
+                <ul>
+                    <li><a href="portal.html" data-i18n="portal_access">Portal Access</a></li>
+                    <li><a href="portal.html" data-i18n="register_here">Online Registration</a></li>
+                    <li><a href="#notices" data-i18n="notices">Notices</a></li>
+                    <li><a href="#contact" data-i18n="contact">Contact Support</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Connect With Us</h4>
+                <p id="footerAddress">Plot 45-B, Sector H-8/4, Education Hub, Islamabad, Pakistan</p>
+                <p>Phone: <span id="footerPhone">+92 51 111 222 333</span></p>
+                <p>Email: <span id="footerEmail">info@beaconlight.edu.pk</span></p>
+                <div class="sms-footer-social">
+                    <a href="#" aria-label="Facebook"><i class="dashicons dashicons-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="dashicons dashicons-twitter"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="dashicons dashicons-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="sms-footer-bottom">
+            <div class="sms-container sms-footer-bottom-inner">
+                <p>&copy; 2026 <span data-i18n="school_name">Beacon Light International Academy</span>. <span data-i18n="all_rights_reserved">All rights reserved.</span></p>
+                <div>
+                    <button type="button" class="lang-pill" onclick="toggleLanguage()" style="background:#1e293b; color:#fff; border:1px solid #475569; padding:5px 12px; border-radius:12px; cursor:pointer; font-size:13px; display:inline-flex; align-items:center; gap:6px;">
+                        <i class="dashicons dashicons-translation"></i> <span id="footerLangSwitchText">اردو (Urdu)</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/landing.js"></script>
+
+    <script>
+        function toggleLanguage() {
+            const current = SMS_I18n.getLanguage();
+            const next = current === 'en' ? 'ur' : 'en';
+            SMS_I18n.setLanguage(next);
+            updateLangButton();
+        }
+
+        function updateLangButton() {
+            const current = SMS_I18n.getLanguage();
+            const label = current === 'en' ? 'اردو (Urdu)' : 'English';
+            const btn1 = document.getElementById('langSwitchText');
+            const btn2 = document.getElementById('footerLangSwitchText');
+            if (btn1) btn1.textContent = label;
+            if (btn2) btn2.textContent = label;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateLangButton();
+            
+            // Populate stats & settings from SMSData
+            const db = SMSData.get();
+            if (db && db.settings) {
+                const s = db.settings;
+                const tp = document.getElementById('topPhone');
+                const te = document.getElementById('topEmail');
+                const cp = document.getElementById('contactPhone');
+                const ce = document.getElementById('contactEmail');
+                const ca = document.getElementById('contactAddress');
+                const fp = document.getElementById('footerPhone');
+                const fe = document.getElementById('footerEmail');
+                const fa = document.getElementById('footerAddress');
+                
+                if (tp) tp.textContent = s.school_phone;
+                if (te) te.textContent = s.school_email;
+                if (cp) cp.textContent = s.school_phone;
+                if (ce) ce.textContent = s.school_email;
+                if (ca) ca.textContent = s.school_address;
+                if (fp) fp.textContent = s.school_phone;
+                if (fe) fe.textContent = s.school_email;
+                if (fa) fa.textContent = s.school_address;
+            }
+
+            // Sync stats
+            if (db && db.students) {
+                const sEl = document.getElementById('statStudents');
+                const tEl = document.getElementById('statTeachers');
+                const cEl = document.getElementById('statClasses');
+                if (sEl) sEl.textContent = `${db.students.length}+`;
+                if (tEl) tEl.textContent = `${db.teachers.length}+`;
+                if (cEl) cEl.textContent = `${db.classes.length}`;
+            }
+
+            // Mobile menu toggle
+            const toggle = document.getElementById('mobileMenuToggle');
+            const nav = document.getElementById('mainNav');
+            if (toggle && nav) {
+                toggle.addEventListener('click', () => {
+                    nav.classList.toggle('open');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Portal - Beacon Light International Academy</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Dashicons Font & CSS -->
+    <link rel="stylesheet" href="assets/css/dashicons.min.css">
+    <!-- Core Portal Styles -->
+    <link rel="stylesheet" href="assets/css/portal.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body class="sms-portal-body">
+
+    <!-- =========================================================================
+         1. AUTH VIEW (LOGIN & REGISTRATION)
+         ========================================================================= -->
+    <div id="smsAuthContainer" class="sms-auth-wrapper">
+        <div class="sms-auth-card">
+            <div class="sms-auth-header">
+                <a href="index.html" class="sms-auth-logo">
+                    <span class="icon">🎓</span>
+                    <h2 data-i18n="school_name">Beacon Light International Academy</h2>
+                </a>
+                <p data-i18n="login_subtitle">Integrated Academic & Administrative Information System</p>
+                <div class="sms-auth-lang" style="margin-top:10px;">
+                    <button type="button" class="lang-pill" onclick="toggleLanguage()" style="background:#1e293b; color:#fff; border:1px solid #475569; padding:4px 10px; border-radius:12px; cursor:pointer; font-size:12px; display:inline-flex; align-items:center; gap:4px;">
+                        <i class="dashicons dashicons-translation"></i> <span class="langToggleLabel">اردو (Urdu)</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Login / Register Switch Tabs -->
+            <div class="sms-auth-tabs">
+                <button type="button" class="auth-tab-btn active" id="tabLoginBtn" data-i18n="sign_in">Sign In</button>
+                <button type="button" class="auth-tab-btn" id="tabRegisterBtn" data-i18n="register_title">Register Account</button>
+            </div>
+
+            <!-- LOGIN FORM PANEL -->
+            <div class="sms-auth-form-panel" id="panelLogin">
+                <form id="smsLoginForm">
+                    <div class="form-group">
+                        <label data-i18n="username_or_email">Username or Email</label>
+                        <div class="input-with-icon">
+                            <i class="dashicons dashicons-admin-users"></i>
+                            <input type="text" id="loginUsername" required class="sms-input" placeholder="admin / teacher1 / student1" autofocus>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label data-i18n="password">Password</label>
+                        <div class="input-with-icon">
+                            <i class="dashicons dashicons-lock"></i>
+                            <input type="password" id="loginPassword" required class="sms-input" placeholder="••••••••">
+                        </div>
+                    </div>
+
+                    <div class="form-row-between">
+                        <label class="sms-checkbox-label">
+                            <input type="checkbox" id="loginRememberMe">
+                            <span data-i18n="remember_me">Remember Me</span>
+                        </label>
+                        <a href="javascript:void(0)" onclick="alert('For demo accounts, use passwords: admin, teacher123, student123, parent123, accountant123')" class="text-sm text-muted">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="sms-btn sms-btn-primary sms-btn-block sms-btn-lg" style="background-color: #1e3a8a !important; color: #ffffff !important; border: 1px solid #1e3a8a !important; font-weight: 700 !important; cursor: pointer !important; width: 100% !important; min-height: 48px !important; display: flex !important; align-items: center !important; justify-content: center !important; gap: 8px !important; text-decoration: none !important;">
+                        <i class="dashicons dashicons-arrow-right-alt" style="color: #ffffff !important; font-size: 18px !important;"></i>
+                        <span style="color: #ffffff !important; font-size: 16px !important; font-weight: 700 !important;" data-i18n="sign_in">Sign In</span>
+                    </button>
+                </form>
+
+                <!-- Demo Credentials Quick Helper -->
+                <div class="sms-demo-credentials-box">
+                    <div class="demo-title">⚡ <strong>Demo 1-Click Access:</strong></div>
+                    <div class="demo-tags">
+                        <span class="demo-tag" onclick="fillLogin('admin','admin')"><strong>Admin:</strong> admin</span>
+                        <span class="demo-tag" onclick="fillLogin('teacher1','teacher123')"><strong>Teacher:</strong> teacher1</span>
+                        <span class="demo-tag" onclick="fillLogin('student1','student123')"><strong>Student:</strong> student1</span>
+                        <span class="demo-tag" onclick="fillLogin('parent1','parent123')"><strong>Parent:</strong> parent1</span>
+                        <span class="demo-tag" onclick="fillLogin('accountant1','accountant123')"><strong>Accountant:</strong> accountant1</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REGISTRATION FORM PANEL -->
+            <div class="sms-auth-form-panel" id="panelRegister" style="display:none;">
+                <form id="smsRegisterForm">
+                    <div class="form-group">
+                        <label><span data-i18n="full_name">Full Legal Name</span> *</label>
+                        <input type="text" id="regName" required class="sms-input" placeholder="e.g. Asad Ullah">
+                    </div>
+
+                    <div class="form-group">
+                        <label><span data-i18n="register_role">Select Role</span> *</label>
+                        <select id="regRole" required class="sms-input">
+                            <option value="student" data-i18n="role_student">Student</option>
+                            <option value="teacher" data-i18n="role_teacher">Teacher</option>
+                            <option value="parent" data-i18n="role_parent">Parent</option>
+                            <option value="accountant" data-i18n="role_accountant">Accountant</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label><span data-i18n="username_or_email">Desired Username</span> *</label>
+                        <input type="text" id="regUsername" required class="sms-input" placeholder="e.g. asad_ullah">
+                    </div>
+
+                    <div class="form-group">
+                        <label><span data-i18n="your_email">Email Address</span> *</label>
+                        <input type="email" id="regEmail" required class="sms-input" placeholder="asad@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label><span data-i18n="password">Password</span> *</label>
+                        <input type="password" id="regPassword" required class="sms-input" placeholder="Minimum 6 characters">
+                    </div>
+
+                    <div class="sms-register-note">
+                        <i class="dashicons dashicons-info"></i>
+                        <span data-i18n="register_subtitle">Your registration will be queued for Admin review before dashboard privileges are activated.</span>
+                    </div>
+
+                    <button type="submit" class="sms-btn sms-btn-accent sms-btn-block sms-btn-lg" style="background-color: #f59e0b !important; color: #ffffff !important; border: 1px solid #f59e0b !important; font-weight: 700 !important; cursor: pointer !important; width: 100% !important; min-height: 48px !important; display: flex !important; align-items: center !important; justify-content: center !important; gap: 8px !important; text-decoration: none !important;">
+                        <i class="dashicons dashicons-welcome-write-blog" style="color: #ffffff !important; font-size: 18px !important;"></i>
+                        <span style="color: #ffffff !important; font-size: 16px !important; font-weight: 700 !important;" data-i18n="register_submit">Submit for Approval</span>
+                    </button>
+
+                    <div class="sms-form-alert" id="smsRegisterAlert" style="display:none; margin-top:12px;"></div>
+                </form>
+            </div>
+
+            <div class="sms-auth-footer">
+                <a href="index.html" class="back-link">
+                    <i class="dashicons dashicons-arrow-left-alt"></i> <span data-i18n="back_to_website">Back to Main Website</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================================
+         2. PORTAL CONTAINER (TOPBAR, SIDEBAR & DASHBOARDS)
+         ========================================================================= -->
+    <div id="smsPortalContainer" class="sms-portal-wrapper" style="display:none;">
+        
+        <!-- Top Navbar -->
+        <header class="sms-portal-topbar">
+            <div class="sms-topbar-left">
+                <button type="button" class="sidebar-toggle-btn" id="smsSidebarToggle" aria-label="Toggle Navigation">
+                    <i class="dashicons dashicons-menu"></i>
+                </button>
+                <div class="topbar-brand">
+                    <span class="icon">🎓</span>
+                    <span class="name" id="navSchoolName">Beacon Light International Academy</span>
+                    <span class="session-badge" id="navSession">Session: 2026-2027</span>
+                </div>
+            </div>
+
+            <div class="sms-topbar-right">
+                <button type="button" class="lang-pill" onclick="toggleLanguage()" style="background:#1e293b; color:#fff; border:1px solid #475569; padding:5px 12px; border-radius:12px; cursor:pointer; font-size:12px; display:inline-flex; align-items:center; gap:6px;">
+                    <i class="dashicons dashicons-translation"></i> <span class="langToggleLabel">اردو (Urdu)</span>
+                </button>
+
+                <div class="user-profile-menu">
+                    <div class="user-avatar" id="navUserAvatar">AD</div>
+                    <div class="user-details">
+                        <span class="user-name" id="navUserName">System Administrator</span>
+                        <span class="user-role-badge" id="navUserRole">Super Admin</span>
+                    </div>
+                </div>
+
+                <button type="button" class="logout-btn" onclick="logout()" title="Sign Out">
+                    <i class="dashicons dashicons-migrate"></i>
+                    <span data-i18n="logout">Sign Out</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <div class="sms-portal-body-wrapper">
+            
+            <!-- Sidebar -->
+            <aside class="sms-portal-sidebar" id="smsSidebar">
+                <nav class="sms-sidebar-menu" id="smsSidebarMenu">
+                    <!-- Populated dynamically by portal.js based on role -->
+                </nav>
+            </aside>
+
+            <!-- Main Tab Content Area -->
+            <main class="sms-portal-main" id="smsMainContent">
+                <div class="sms-tab-content" id="smsTabContent">
+                    <!-- Populated dynamically by portal.js based on activeTab -->
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+    <!-- =========================================================================
+         3. UNIVERSAL MODAL OVERLAY
+         ========================================================================= -->
+    <div id="smsUniversalModal" class="sms-modal-overlay" style="display:none;">
+        <div class="sms-modal-dialog">
+            <div class="sms-modal-header">
+                <h3 id="smsModalTitle">Details</h3>
+                <button type="button" class="sms-modal-close" onclick="closeModal()">×</button>
+            </div>
+            <div class="sms-modal-body" id="smsModalBody">
+                <!-- Dynamically injected -->
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================================
+         4. HIDDEN MODAL TEMPLATES (Used by openModal())
+         ========================================================================= -->
+    
+    <!-- Add Student Template -->
+    <div class="sms-modal-hidden" id="modalAddStudent" data-title="Register New Student" style="display:none;">
+        <form onsubmit="submitAddStudent(event)">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Student Full Name *</label>
+                    <input type="text" name="name" required class="sms-input" placeholder="e.g. Hamza Ali">
+                </div>
+                <div class="form-group">
+                    <label>Username *</label>
+                    <input type="text" name="username" required class="sms-input" placeholder="e.g. hamza_ali">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" name="email" required class="sms-input" placeholder="hamza@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Gender *</label>
+                    <select name="gender" class="sms-input">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Admission No. *</label>
+                    <input type="text" name="admission_no" required class="sms-input" value="ADM-2026-99">
+                </div>
+                <div class="form-group">
+                    <label>Roll Number *</label>
+                    <input type="text" name="roll_no" required class="sms-input" value="45">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Assign Class *</label>
+                    <select name="class_id" class="sms-input">
+                        <option value="1">Grade 1</option>
+                        <option value="2">Grade 2</option>
+                        <option value="5">Grade 5</option>
+                        <option value="9">Grade 9</option>
+                        <option value="10">Grade 10</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Assign Section *</label>
+                    <select name="section_id" class="sms-input">
+                        <option value="1">Section A (Blue)</option>
+                        <option value="2">Section B (Green)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Residential Address</label>
+                <textarea name="address" class="sms-input" rows="2" placeholder="Street, Sector, City"></textarea>
+            </div>
+            <div class="form-actions" style="margin-top:16px; display:flex; gap:10px;">
+                <button type="submit" class="sms-btn sms-btn-primary">Save Student</button>
+                <button type="button" class="sms-btn sms-btn-outline" onclick="closeModal()">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Add Teacher Template -->
+    <div class="sms-modal-hidden" id="modalAddTeacher" data-title="Add Faculty Member" style="display:none;">
+        <form onsubmit="submitAddTeacher(event)">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Faculty Full Name *</label>
+                    <input type="text" name="name" required class="sms-input" placeholder="e.g. Prof. Khalid Mehmood">
+                </div>
+                <div class="form-group">
+                    <label>Username *</label>
+                    <input type="text" name="username" required class="sms-input" placeholder="e.g. khalid_m">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" name="email" required class="sms-input" placeholder="khalid@beaconlight.edu.pk">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="text" name="phone" required class="sms-input" placeholder="+92 300 9876543">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Faculty ID Code *</label>
+                    <input type="text" name="teacher_id" required class="sms-input" value="TCH-099">
+                </div>
+                <div class="form-group">
+                    <label>Designation *</label>
+                    <input type="text" name="designation" required class="sms-input" placeholder="Senior Subject Specialist">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Academic Qualification *</label>
+                <input type="text" name="qualification" required class="sms-input" placeholder="M.Phil Physics / M.Sc Mathematics">
+            </div>
+            <div class="form-actions" style="margin-top:16px; display:flex; gap:10px;">
+                <button type="submit" class="sms-btn sms-btn-primary">Save Faculty Member</button>
+                <button type="button" class="sms-btn sms-btn-outline" onclick="closeModal()">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Add Expense Template -->
+    <div class="sms-modal-hidden" id="modalAddExpense" data-title="Record Operating Expense" style="display:none;">
+        <form onsubmit="submitAddExpense(event)">
+            <div class="form-group">
+                <label>Expense Title / Purpose *</label>
+                <input type="text" name="title" required class="sms-input" placeholder="e.g. Science Lab Consumables">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Category *</label>
+                    <select name="category" class="sms-input">
+                        <option value="laboratory">Laboratory & Equipment</option>
+                        <option value="utilities">Utilities & Electricity</option>
+                        <option value="maintenance">Campus Maintenance</option>
+                        <option value="stationery">Stationery & Printing</option>
+                        <option value="transport">Fleet Fuel & Maintenance</option>
+                        <option value="events">Sports & Annual Functions</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Amount (PKR) *</label>
+                    <input type="number" name="amount" required class="sms-input" placeholder="e.g. 25000">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Date *</label>
+                <input type="date" name="expense_date" required class="sms-input" value="2026-09-17">
+            </div>
+            <div class="form-group">
+                <label>Notes / Voucher Details</label>
+                <textarea name="description" class="sms-input" rows="2"></textarea>
+            </div>
+            <div class="form-actions" style="margin-top:16px; display:flex; gap:10px;">
+                <button type="submit" class="sms-btn sms-btn-primary">Save Expense</button>
+                <button type="button" class="sms-btn sms-btn-outline" onclick="closeModal()">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Add Notice Template -->
+    <div class="sms-modal-hidden" id="modalAddNotice" data-title="Publish Circular / Notice" style="display:none;">
+        <form onsubmit="submitAddNotice(event)">
+            <div class="form-group">
+                <label>Notice Headline *</label>
+                <input type="text" name="title" required class="sms-input" placeholder="e.g. Schedule for First Term Examinations 2026">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Target Audience *</label>
+                    <select name="audience" class="sms-input">
+                        <option value="all">All School Community</option>
+                        <option value="public">Public (Website Notice Board)</option>
+                        <option value="teachers">Teachers Only</option>
+                        <option value="students">Students Only</option>
+                        <option value="parents">Parents Only</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Priority *</label>
+                    <select name="priority" class="sms-input">
+                        <option value="normal">Normal</option>
+                        <option value="urgent">Urgent / Important</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Circular Content / Details *</label>
+                <textarea name="content" required class="sms-input" rows="4" placeholder="Detailed announcement text..."></textarea>
+            </div>
+            <div class="form-actions" style="margin-top:16px; display:flex; gap:10px;">
+                <button type="submit" class="sms-btn sms-btn-primary">Publish Announcement</button>
+                <button type="button" class="sms-btn sms-btn-outline" onclick="closeModal()">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/portal.js"></script>
+
+    <script>
+        function toggleLanguage() {
+            const current = SMS_I18n.getLanguage();
+            const next = current === 'en' ? 'ur' : 'en';
+            SMS_I18n.setLanguage(next);
+            updateLangButton();
+            if (typeof renderPortalView === 'function' && currentUser) {
+                renderPortalView();
+            }
+        }
+
+        function updateLangButton() {
+            const current = SMS_I18n.getLanguage();
+            const label = current === 'en' ? 'اردو (Urdu)' : 'English';
+            document.querySelectorAll('.langToggleLabel').forEach(el => {
+                el.textContent = label;
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateLangButton();
+        });
+    </script>
+</body>
+</html>
